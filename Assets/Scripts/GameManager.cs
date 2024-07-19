@@ -59,4 +59,20 @@ public class GameManager : MonoBehaviour
     {
         OptionsCanvas.SetActive(true);
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public GameObject creditsScreen;
+    public GameObject MainScreen;
+    public void Credits()
+    {
+        creditsScreen.SetActive(true);
+        MainScreen.SetActive(false);
+    }
+    public void CloseCredits()
+    {
+        creditsScreen.SetActive(false);
+        MainScreen.SetActive(true);
+    }
 }
