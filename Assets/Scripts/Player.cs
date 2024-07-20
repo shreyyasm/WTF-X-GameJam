@@ -77,19 +77,34 @@ public class Player : MonoBehaviour
         //        Sink();
         //    }
         //}
-        if (other.CompareTag("Beaker") && Input.GetKeyDown(KeyCode.E) && !holding)
+        if (other.CompareTag("Beaker") )
         {
-            data = other.gameObject.GetComponent<Beaker>().GetData();
-            holding = true;
+            if(Input.GetKeyDown(KeyCode.E) && !holding)
+            {
+                data = other.gameObject.GetComponent<Beaker>().GetData();
+                holding = true;
+            }
+            InteractUI.SetActive(true);
+            
         }
-        else if (other.CompareTag("Machine") && Input.GetKeyDown(KeyCode.E) && holding)
+        else if (other.CompareTag("Machine"))
         {
-            GM.Check(data);
-            holding = false;
+            if (Input.GetKeyDown(KeyCode.E) && holding)
+            {
+                GM.Check(data);
+                holding = false;
+            }
+            InteractUI.SetActive(true);
+           
         }
-        else if (other.CompareTag("Sink") && Input.GetKeyDown(KeyCode.E) && holding)
+        else if (other.CompareTag("Sink") )
         {
-            holding = false;
+            if(Input.GetKeyDown(KeyCode.E) && holding)
+            {
+                holding = false;
+            }
+            InteractUI.SetActive(true);
+           
         }
 
     }
