@@ -7,7 +7,7 @@ public class Beaker : MonoBehaviour
 {
     
     [SerializeField]private int data;
-
+    public Material material;
     
     public void SetData(int d,string s)
     {

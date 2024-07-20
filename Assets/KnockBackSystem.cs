@@ -35,9 +35,9 @@ public class KnockBackSystem : MonoBehaviour
         Instantiate(ChemicalPickupVFX, Position.position, Quaternion.identity);
         SoundManager.Instance.ChemicalPickup();
     }
-    public void ChemicalDrop()
+    public void ChemicalDrop(Transform Position)
     {
-        Instantiate(ChemicalDropVFX, MainBeakerPos.transform.position, Quaternion.identity);
+        Instantiate(ChemicalDropVFX, Position.position, Quaternion.identity);
         SoundManager.Instance.ChemicalDrop();
     }
     public void WrongCompund()
