@@ -10,9 +10,9 @@ public class FormulationLogic : MonoBehaviour
 	[SerializeField]private List<int> serial_no = new List<int>();
 	[SerializeField]private GameObject Beakers;
 	[SerializeField]private List<Beaker> beaker_placeholder = new List<Beaker>();
-	private int index =0; 
-	
-	
+	private int index =0;
+	[SerializeField] private int[,] chemicalset = new int[3, 2];
+
 	public void Start()
 	{
 		foreach(Transform b in Beakers.transform)
@@ -64,6 +64,20 @@ public class FormulationLogic : MonoBehaviour
 
 		#endregion
 
+		
+		#region ChemicalSet
+		int chemicalindex = 0;
+		for (int i = 0; i <= 2; i++)
+		{
+			for (int j = 0; j <= 1; j++)
+			{
+				Debug.Log(i + "," + j);
+				chemicalset[i, j] = serial_no[chemicalindex];
+				Debug.Log(chemicalindex);
+				chemicalindex++;
+			}
+		}
+		#endregion
 
 		return 0;
 	}
