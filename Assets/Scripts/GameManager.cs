@@ -14,11 +14,32 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
     }
-
+    public bool OptionsOpend = false;
     // Update is called once per frame
     void Update()
     {
-        
+        if(!OptionsOpend)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                OptionsCanvas.SetActive(true);
+                OptionsOpend = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                Time.timeScale = 0;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OptionsCanvas.SetActive(false);
+                OptionsOpend = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1;
+            }
+        }
     }
     public void GoToStory()
     {
@@ -44,15 +65,18 @@ public class GameManager : MonoBehaviour
     public void CloseControlsCanvas()
     {
         controlsCanvas.SetActive(false);
-        if (!gameStarted)
-            keyCanvas.SetActive(true);
+        
     }
     public GameObject OptionsCanvas;
     public GameObject keyCanvas;
     public void CloseOptionsCanvas()
     {
+       
+        OptionsOpend = false;
         OptionsCanvas.SetActive(false);
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
 
     }
     public void OpenOptionsCanvas()
@@ -75,4 +99,5 @@ public class GameManager : MonoBehaviour
         creditsScreen.SetActive(false);
         MainScreen.SetActive(true);
     }
+    
 }
