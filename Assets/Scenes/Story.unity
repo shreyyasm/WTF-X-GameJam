@@ -155,12 +155,18 @@ MonoBehaviour:
   dialogue:
     name: Player
     sentences:
-    - 'In the deserted research facility, Proto, a small robot assistant built by
-      scientist Dr. Alexander, navigates among the undead remnants of humanity. '
-    - 'Dr. Alexander is gone, and Proto, programmed for scientific aid, faces a daunting
-      challenge: synthesizing an antidote to save the last survivors. '
-    - With no knowledge of chemistry, Proto delves into Dr. Alexander's notes, piecing
-      together fragments of data.
+    - An apocalypse has ravaged the Earth, leaving cities in ruins and millions dead.
+      Amidst the destruction, hope is all but lost.
+    - You are Proto, a miniature robot created by Dr. Michael Anders. The emergency
+      protocol activates, and you find yourself alone in a devastated scientific
+      facility. Dr. Anders is dead, clutching a notebook filled with his final research.
+    - Dr. Anders' notes reveal an antidote capable of saving humanity. The instructions
+      are incomplete and scattered. As the last hope, you must synthesize the antidote
+      using the information in the notebook.
+    - 'You need to gather the necessary components: a chemical compound from the
+      storage unit, hazardous and heavily defended; stabilize and synthesize the
+      compound in the reactor room; and obtain the final ingredient from the biolab,
+      guarded by mutated creatures.'
 --- !u!4 &25225730
 Transform:
   m_ObjectHideFlags: 0
@@ -336,6 +342,7 @@ MonoBehaviour:
   controlsCanvas: {fileID: 0}
   gameStarted: 0
   gamestartWord: 0
+  OptionsOpend: 0
   OptionsCanvas: {fileID: 0}
   keyCanvas: {fileID: 0}
   creditsScreen: {fileID: 0}

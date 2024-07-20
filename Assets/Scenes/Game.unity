@@ -926,9 +926,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9289595dd518e7847bf5d05bae1dc359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchSFX: {fileID: 0}
-  keyPressSFX: {fileID: 0}
-  wrongKeySFX: {fileID: 0}
+  ChemicalPickupSFX: {fileID: 0}
+  ChemicalDropSFX: {fileID: 0}
+  WrongCompundSFX: {fileID: 0}
+  RightCompundSFX: {fileID: 0}
+  ChemicalRinseSFX: {fileID: 0}
+  TestubeBurstSFX: {fileID: 0}
+  AntidoteCreatedSFX: {fileID: 0}
+  machineTurnOnSFX: {fileID: 0}
 --- !u!4 &327557834
 Transform:
   m_ObjectHideFlags: 0
@@ -4328,6 +4333,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3107428706696893800, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 4962451223956131612}
     - targetCorrespondingSourceObject: {fileID: 4104233831770876844, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1879565513}
@@ -4335,6 +4343,33 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1879565512}
   m_SourcePrefab: {fileID: 100100000, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
+--- !u!1 &4962451223956131611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3107428706696893800, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
+  m_PrefabInstance: {fileID: 4962451223956131610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4962451223956131612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962451223956131611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0580361b2e8b60d489021652d4cbc0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MixingMachinePos: {fileID: 0}
+  MainBeakerPos: {fileID: 0}
+  SinkPos: {fileID: 0}
+  ChemicalPickupVFX: {fileID: 5973625571155749574, guid: 8247680aaf8222c4e93675628e336907, type: 3}
+  ChemicalDropVFX: {fileID: 376824233930867777, guid: a54dfd69932f2834f996898fa6e18fff, type: 3}
+  WrongCompundVFX: {fileID: 5175581799238459098, guid: acb4d7245301352429381eae56a82708, type: 3}
+  RightCompundVFX: {fileID: 1054623692228919799, guid: bd5703d32b8e83a458aaf927f2cc030d, type: 3}
+  ChemicalRinseVFX: {fileID: 5959365484119832395, guid: 848c687f98306a04d84da9ab70b2f5fc, type: 3}
+  TestubeBurstVFX: {fileID: 1102658220106295552, guid: 386de7e5b8a7a2342844496f8cb7377c, type: 3}
+  AntidoteCreatedVFX: {fileID: 2336573754078046395, guid: dd65ff4b89c218741b49af1c4002a5d3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
