@@ -926,14 +926,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9289595dd518e7847bf5d05bae1dc359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChemicalPickupSFX: {fileID: 0}
-  ChemicalDropSFX: {fileID: 0}
-  WrongCompundSFX: {fileID: 0}
-  RightCompundSFX: {fileID: 0}
-  ChemicalRinseSFX: {fileID: 0}
-  TestubeBurstSFX: {fileID: 0}
-  AntidoteCreatedSFX: {fileID: 0}
-  machineTurnOnSFX: {fileID: 0}
+  ChemicalPickupSFX: {fileID: 8300000, guid: 93e7041409f5b054db5d1494f6a3bb5e, type: 3}
+  ChemicalDropSFX: {fileID: 8300000, guid: 060973a22c7b0504d8f29d07272e5af8, type: 3}
+  WrongCompundSFX: {fileID: 8300000, guid: ec729e4e36a41974786d21de6bac7268, type: 3}
+  RightCompundSFX: {fileID: 8300000, guid: ec729e4e36a41974786d21de6bac7268, type: 3}
+  ChemicalRinseSFX: {fileID: 8300000, guid: e9e42a1530cdcde42bb59f8296eb31b4, type: 3}
+  TestubeBurstSFX: {fileID: 8300000, guid: f57a0c696d1a049458c1edf8957a5d61, type: 3}
+  AntidoteCreatedSFX: {fileID: 8300000, guid: b9ae59f2e57f1214fa5b8bc3e1d075ef, type: 3}
+  machineTurnOnSFX: {fileID: 8300000, guid: fea0ee1647e6a2e47b499e21cbf6d914, type: 3}
 --- !u!4 &327557834
 Transform:
   m_ObjectHideFlags: 0
