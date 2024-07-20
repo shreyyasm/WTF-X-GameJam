@@ -10,23 +10,28 @@ public class CameraAi : MonoBehaviour
     // The target marker.
     public Transform target;
 
+
+    public Transform Raytarget;
+    public Transform Raypos1;
+    public Transform Raypos2;
     // Angular speed in radians per sec.
     public float speed = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
         target = pos1;
+        Raytarget = Raypos1;
     }
     public float Movey;
     // Update is called once per frame
     void Update()
     {
         Movey = transform.rotation.y;
-        if (transform.rotation.y > 0.9)
+        if (transform.rotation.y > 0.7)
         {
             target = pos2;
         }
-        if (transform.rotation.y < 0.1)
+        if (transform.rotation.y < 0.3)
         {
             target = pos1;
         }
@@ -40,9 +45,20 @@ public class CameraAi : MonoBehaviour
         // Draw a ray pointing at our target in
         Debug.DrawRay(transform.position, newDirection, Color.red);
 
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        //transform.rotation = Quaternion.LookRotation(newDirection);
+        Raycast();
 
-        
+        //origin.transform.Translate(Raytarget.position * speed* Time.deltaTime);
+        var step = speed* Time.deltaTime; // calculate distance to move
+        origin.position = Vector3.MoveTowards(origin.position, Raytarget.position, step);
+        if (origin.transform.position == Raypos1.position)
+        {
+            Raytarget = Raypos2;
+        }
+        if (origin.transform.position == Raypos2.position)
+        {
+            Raytarget = Raypos1;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -50,6 +66,39 @@ public class CameraAi : MonoBehaviour
         {
             Debug.Log("GameOver");
         }
+    }
+    public GameObject currentHitObject;
+    public float sphereRadius;
+    public float maxDistance;
+    public LayerMask layermask;
+
+    public Transform origin;
+    public Vector3 direction;
+    private float currentHitDistance;
+
+    public void Raycast()
+    {
+       
+        
+        RaycastHit hit;
+        if(Physics.SphereCast(origin.position, sphereRadius,direction, out hit, maxDistance,layermask,QueryTriggerInteraction.UseGlobal))
+        {
+            currentHitObject = hit.transform.gameObject;
+            currentHitDistance = hit.distance;
+
+        }
+        else
+        {
+            currentHitDistance = maxDistance;
+            currentHitObject = null;
+        }
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(origin.position, origin.position + direction * currentHitDistance);
+        Gizmos.DrawWireSphere(origin.position + direction * currentHitDistance, sphereRadius);
     }
 }
 
