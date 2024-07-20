@@ -8,6 +8,8 @@ TagManager:
   - Beaker
   - Sink
   - Pipe
+  - FxTemporaire
+  - Machine
   layers:
   - Default
   - TransparentFX

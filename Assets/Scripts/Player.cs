@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        holding = false;
     }
 
     // Update is called once per frame
@@ -43,38 +43,54 @@ public class Player : MonoBehaviour
             //Anim.SetBool("Walk", false);
         }
     }
-    
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private FormulationLogic GM;
+
+    [SerializeField] private bool holding;
+    [SerializeField] private int data;
+    private void OnTriggerStay(Collider other)
     {
         
-        if(other.CompareTag("Jar"))
+        //if(other.CompareTag("Jar"))
+        //{
+        //    InteractUI.SetActive(true);
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("Picked");
+        //        Pickup();
+        //    }
+        //}
+        //if (other.CompareTag("Beaker"))
+        //{
+        //    InteractUI.SetActive(true);
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("Beaker");
+        //        Drop();
+        //    }
+        //}
+        //if (other.CompareTag("Sink"))
+        //{
+        //    InteractUI.SetActive(true);
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("Sink");
+        //        Sink();
+        //    }
+        //}
+        if (other.CompareTag("Beaker") && Input.GetKeyDown(KeyCode.E) && !holding)
         {
-            InteractUI.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Picked");
-                Pickup();
-            }
+            data = other.gameObject.GetComponent<Beaker>().GetData();
+            holding = true;
         }
-        if (other.CompareTag("Beaker"))
+        else if (other.CompareTag("Machine") && Input.GetKeyDown(KeyCode.E) && holding)
         {
-            InteractUI.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Beaker");
-                Drop();
-            }
+            GM.Check(data);
+            holding = false;
         }
-        if (other.CompareTag("Sink"))
+        else if (other.CompareTag("Sink") && Input.GetKeyDown(KeyCode.E) && holding)
         {
-            InteractUI.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Sink");
-                Sink();
-            }
+            holding = false;
         }
-        
 
     }
     private void OnTriggerExit(Collider other)
