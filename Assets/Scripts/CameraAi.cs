@@ -17,15 +17,16 @@ public class CameraAi : MonoBehaviour
     {
         target = pos1;
     }
+    public float Movey;
     // Update is called once per frame
     void Update()
     {
-       
-        if (transform.rotation.y > 0.5)
+        Movey = transform.rotation.y;
+        if (transform.rotation.y > 0.9)
         {
             target = pos2;
         }
-        if (transform.rotation.y < -0.5)
+        if (transform.rotation.y < 0.1)
         {
             target = pos1;
         }

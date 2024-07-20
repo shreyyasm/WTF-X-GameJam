@@ -11,8 +11,9 @@ public class FormulationLogic : MonoBehaviour
 	[SerializeField]private GameObject Beakers;
 	[SerializeField]private List<Beaker> beaker_placeholder = new List<Beaker>();
 	private int index =0;
-	[SerializeField] private int[,] chemicalset = new int[3, 2];
 
+	[SerializeField] private int[] chemicalset = new int[2];
+	[SerializeField] private int[] checkset = new int[2];
 	public void Start()
 	{
 		foreach(Transform b in Beakers.transform)
@@ -64,37 +65,33 @@ public class FormulationLogic : MonoBehaviour
 
 		#endregion
 
-		
-		#region ChemicalSet
-		int chemicalindex = 0;
-		for (int i = 0; i <= 2; i++)
-		{
-			for (int j = 0; j <= 1; j++)
-			{
-				Debug.Log(i + "," + j);
-				chemicalset[i, j] = serial_no[chemicalindex];
-				Debug.Log(chemicalindex);
-				chemicalindex++;
-			}
-		}
-		#endregion
+
 
 		return 0;
 	}
 	 
 	public void Check(int input)
 	{
-		
-		if(input == serial_no[index])
+
+		checkset[index] = serial_no[index];
+		chemicalset[index] = input;
+		if ((index + 1) % 2 == 0)
 		{
-			Debug.Log($"<color=green>Succed</color> message");
+			if (checkset[0] == chemicalset[0] && checkset[1] == chemicalset[1])
+			{
+				index++;
+			}
+			else
+			{
+				Debug.Log("Failed");
+				index--;
+			}
+		}
+		else
+		{
 			index++;
 		}
-		else{
-			Debug.Log($"<color=red>Fail</color> message");
-			//Restartcode goes here
-		}
-		
+
 	}
 
 	void Shuffle<T>(List<T> list)

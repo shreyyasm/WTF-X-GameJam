@@ -57,10 +57,12 @@ public class Player : MonoBehaviour
         {
             GM.Check(data);
             KnockBackSystem.Instance.ChemicalDrop(transform);
+            //KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
         if (Input.GetKeyDown(KeyCode.E) && holding && touchSink)
         {
+            KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
     }
@@ -76,33 +78,7 @@ public class Player : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        //if(other.CompareTag("Jar"))
-        //{
-        //    InteractUI.SetActive(true);
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        Debug.Log("Picked");
-        //        Pickup();
-        //    }
-        //}
-        //if (other.CompareTag("Beaker"))
-        //{
-        //    InteractUI.SetActive(true);
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        Debug.Log("Beaker");
-        //        Drop();
-        //    }
-        //}
-        //if (other.CompareTag("Sink"))
-        //{
-        //    InteractUI.SetActive(true);
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        Debug.Log("Sink");
-        //        Sink();
-        //    }
-        //}
+       
         if (other.CompareTag("Beaker"))
         {
             touchBeaker = true;

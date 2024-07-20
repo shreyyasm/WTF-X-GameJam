@@ -33,11 +33,11 @@ public class SoundManager : MonoBehaviour
     }
     public void ChemicalPickup()
     {
-        AudioSource.PlayClipAtPoint(ChemicalPickupSFX, Camera.main.transform.position, 0.4f);
+        AudioSource.PlayClipAtPoint(ChemicalPickupSFX, Camera.main.transform.position, 0.6f);
     }
     public void ChemicalDrop()
     {
-        AudioSource.PlayClipAtPoint(ChemicalDropSFX, Camera.main.transform.position, 0.4f);
+        AudioSource.PlayClipAtPoint(ChemicalDropSFX, Camera.main.transform.position, 0.6f);
     }
     public void WrongCompund()
     {

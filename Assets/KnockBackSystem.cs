@@ -47,7 +47,7 @@ public class KnockBackSystem : MonoBehaviour
     }
     public void RightCompund()
     {
-        Instantiate(RightCompundVFX, MixingMachinePos.transform.position, Quaternion.identity);
+        Instantiate(RightCompundVFX, MixingMachinePos.transform.position, Quaternion.Euler(-90,0,0));
         SoundManager.Instance.WrongCompund();
     }
     public void ChemicalRinse()

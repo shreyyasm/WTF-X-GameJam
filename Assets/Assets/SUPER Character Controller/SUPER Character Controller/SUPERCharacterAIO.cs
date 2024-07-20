@@ -1275,7 +1275,7 @@ public class SUPERCharacterAIO : MonoBehaviour{
                 }
                 
                 if(currentClipSet!=null && currentClipSet.Any()){
-                    playerAudioSource.PlayOneShot(currentClipSet[Random.Range(0,currentClipSet.Count())]);
+                    playerAudioSource.PlayOneShot(currentClipSet[Random.Range(0,currentClipSet.Count())],0.4f);
                 }
             }
         }
