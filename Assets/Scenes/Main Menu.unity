@@ -323,8 +323,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2aadb67a47701a34b995ffe9f522b614, type: 2}
-  m_sharedMaterial: {fileID: -138574309707734583, guid: 2aadb67a47701a34b995ffe9f522b614, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 639ff877695cb624885a07a3204128dc, type: 2}
+  m_sharedMaterial: {fileID: -6388456073429385522, guid: 639ff877695cb624885a07a3204128dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2219,7 +2219,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.84
   m_Range: 10
   m_SpotAngle: 30
@@ -4724,8 +4724,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2aadb67a47701a34b995ffe9f522b614, type: 2}
-  m_sharedMaterial: {fileID: -138574309707734583, guid: 2aadb67a47701a34b995ffe9f522b614, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 639ff877695cb624885a07a3204128dc, type: 2}
+  m_sharedMaterial: {fileID: -6388456073429385522, guid: 639ff877695cb624885a07a3204128dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5872,6 +5872,8 @@ MonoBehaviour:
   Narration2: {fileID: 8300000, guid: 0bfa762b73aed8f4eac05f55a9649a52, type: 3}
   Narration3: {fileID: 8300000, guid: 1e381df5dedb60744b9ddde615a96e34, type: 3}
   Narration4: {fileID: 8300000, guid: 1f5e029784363ba40a673932bc48b839, type: 3}
+  audioSource: {fileID: 0}
+  CAMERA: {fileID: 0}
 --- !u!114 &2963689420348961911
 MonoBehaviour:
   m_ObjectHideFlags: 0

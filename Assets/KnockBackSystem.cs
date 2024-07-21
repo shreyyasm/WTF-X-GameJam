@@ -82,7 +82,7 @@ public class KnockBackSystem : MonoBehaviour
     }
     IEnumerator Gameover()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
         GameOverCanvas.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
