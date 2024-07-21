@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 public class Player : MonoBehaviour
 {
+
     public static Player Instance;
     public SUPERCharacterAIO controller;
 
@@ -101,7 +102,7 @@ public class Player : MonoBehaviour
             holding = true;
 
         }
-
+        
         if (Input.GetKeyDown(KeyCode.E) && holding && touchMachine)
         {
            

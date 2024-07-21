@@ -37,12 +37,24 @@ public class FormulationLogic : MonoBehaviour
 		{
 			VortexPivot.transform.Rotate(0, 20f, 0, Space.World);
 		}
-
+		
 	}
 	bool Introduced;
     private void Update()
     {
-        if(Player.Instance.Narrating && Introduced)
+		board_placeholder[index].fontStyle = FontStyles.Underline;
+
+		//for (int i = 0; i <= index; i++)
+		//{
+		//	//board_placeholder[i].color = new Color(0, 1, 0, 1);
+		//}
+		//for (int i = index; i <= 5; i++)
+		//{
+		//	board_placeholder[index].fontStyle = FontStyles.Underline;
+		//	//board_placeholder[i].color = new Color(1, 1, 1, 1);
+
+		//}
+		if (Player.Instance.Narrating && Introduced)
         {
 			laser.SetActive(false);
         }
@@ -145,17 +157,18 @@ public class FormulationLogic : MonoBehaviour
 			{
 				StartCoroutine(MachineAnimation(1));
 				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
-				
+				board_placeholder[index].color = new Color(0, 1, 0, 1);
+				board_placeholder[index-1].color = new Color(0, 1, 0, 1);
 				index++;
 				
 			}
 			else
 			{
 				StartCoroutine(MachineAnimation(0));
-				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
-				//KnockBackSystem.Instance.WrongCompund();
-				
-				Debug.Log("Failed");
+                //MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
+                //KnockBackSystem.Instance.WrongCompund();
+                
+                Debug.Log("Failed");
 				//index--;
 			}
 		}
@@ -168,6 +181,7 @@ public class FormulationLogic : MonoBehaviour
 	}
 	private IEnumerator MachineAnimation(int i)
 	{
+
 		VortexAnim = true;
 		SoundManager.Instance.Rotationn();
 		yield return new WaitForSeconds(3f);
@@ -179,6 +193,13 @@ public class FormulationLogic : MonoBehaviour
 			Debug.Log("anim fail");
 			KnockBackSystem.Instance.WrongCompund();
 			index--;
+		
+			for (int f = index + 1; f <= 5; f++)
+			{
+				board_placeholder[f].fontStyle &= ~FontStyles.Underline;
+				//board_placeholder[i].color = new Color(1, 1, 1, 1);
+
+			}
 		}
 		else if (i == 1)
 		{

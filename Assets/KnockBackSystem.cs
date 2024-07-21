@@ -18,6 +18,8 @@ public class KnockBackSystem : MonoBehaviour
     public GameObject ChemicalRinseVFX;
     public GameObject TestubeBurstVFX;
     public GameObject AntidoteCreatedVFX;
+
+    public GameObject wrongVFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,8 @@ public class KnockBackSystem : MonoBehaviour
     public void WrongCompund()
     {
         Instantiate(WrongCompundVFX, MixingMachinePos.transform.position, Quaternion.identity);
-        Instantiate(TestubeBurstVFX, MixingMachinePos.transform.position, Quaternion.identity);
+        //Instantiate(TestubeBurstVFX, MixingMachinePos.transform.position, Quaternion.identity);
+        Instantiate(wrongVFX, MixingMachinePos.transform.position, Quaternion.identity);
         SoundManager.Instance.WrongCompund();
     }
     public void RightCompund()

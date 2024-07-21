@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip machineTurnOnSFX;
 
     public AudioClip RotationSFX;
+    public AudioClip JumpSound;
     // [SerializeField] AudioClip punchSFX;
     //[SerializeField] AudioClip punchSFX;
 
@@ -66,6 +67,10 @@ public class SoundManager : MonoBehaviour
     public void Rotationn()
     {
         Narration.Instance.audioSource.PlayOneShot(RotationSFX, 1f);
+    }
+    public void JumpSFX()
+    {
+        Narration.Instance.audioSource.PlayOneShot(JumpSound, 1f);
     }
     public void CallKeyPressSFX()
     {
