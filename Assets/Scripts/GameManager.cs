@@ -47,14 +47,22 @@ public class GameManager : MonoBehaviour
     }
     public void GoToGame()
     {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.UnloadSceneAsync(currentIndex);
         SceneManager.LoadScene(2);
     }
     public void GotoMainMenu()
     {
         SceneManager.LoadScene(0);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.UnloadSceneAsync(currentIndex);
+        //LeanTween.delayedCall(8f, () => { anim.SetBool("Idle", false); });
+        
     }
     public void RestartGame()
     {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.UnloadSceneAsync(currentIndex);
         SceneManager.LoadScene(1);
     }
     public void OpenControlsCanvas()

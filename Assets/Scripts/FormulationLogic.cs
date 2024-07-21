@@ -119,7 +119,7 @@ public class FormulationLogic : MonoBehaviour
 	public void Check(int input,Color colour)
 	{
 
-		checkset[index] = serial_no[index];
+		checkset[index % 2] = serial_no[index];
 		MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
 		//Color col = PlayerTestTube.GetComponent<Renderer>().material.GetColor("_sidecolour");
 		Debug.Log(colour);
@@ -127,7 +127,7 @@ public class FormulationLogic : MonoBehaviour
 		MachineTestTube[index].GetComponent<Renderer>().material.SetColor("_topcolour", colour);
 
 
-		chemicalset[index] = input;
+		chemicalset[index & 2] = input;
 		if ((index + 1) % 2 == 0)
 		{
 			if (!Player.Instance.machineRun)
