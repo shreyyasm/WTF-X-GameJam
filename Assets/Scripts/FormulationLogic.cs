@@ -42,7 +42,8 @@ public class FormulationLogic : MonoBehaviour
 	bool Introduced;
     private void Update()
     {
-		board_placeholder[index].fontStyle = FontStyles.Underline;
+		if(index < 6)
+			board_placeholder[index].fontStyle = FontStyles.Underline;
 
 		//for (int i = 0; i <= index; i++)
 		//{
@@ -54,15 +55,15 @@ public class FormulationLogic : MonoBehaviour
 		//	//board_placeholder[i].color = new Color(1, 1, 1, 1);
 
 		//}
-		if (Player.Instance.Narrating && Introduced)
-        {
-			laser.SetActive(false);
-        }
-		if(!Player.Instance.Narrating && Introduced)
-		{
+		//if (Player.Instance.Narrating && Introduced)
+  //      {
+		//	laser.SetActive(false);
+  //      }
+		//if(!Player.Instance.Narrating && Introduced)
+		//{
 			
-			laser.SetActive(true); ;
-		}
+		//	laser.SetActive(true); ;
+		//}
     }
     public GameObject MachineTT;
 	public int SetChemicals()
@@ -127,12 +128,12 @@ public class FormulationLogic : MonoBehaviour
 		MachineTestTube[index].GetComponent<Renderer>().material.SetColor("_topcolour", colour);
 
 
-		chemicalset[index & 2] = input;
+		chemicalset[index % 2] = input;
 		if ((index + 1) % 2 == 0)
 		{
 			if (!Player.Instance.machineRun)
 			{
-				LeanTween.delayedCall(10f, () =>
+				LeanTween.delayedCall(5f, () =>
 				{
 					Player.Instance.Narrating = true;
 					Player.Instance.machineRun = true;
@@ -184,6 +185,16 @@ public class FormulationLogic : MonoBehaviour
 
 		VortexAnim = true;
 		SoundManager.Instance.Rotationn();
+		if(i == 1 )
+        {
+			if(index >= 5)
+            {
+				Debug.Log("work");
+				KnockBackSystem.Instance.AntidoteSound();
+				
+            }
+				
+		}
 		yield return new WaitForSeconds(3f);
 		VortexAnim = false;
 		if (i == 0)
@@ -204,12 +215,14 @@ public class FormulationLogic : MonoBehaviour
 		else if (i == 1)
 		{
 			MachineTestTube[index - 1].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
-			MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
+			if(index <  6)
+				MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
 			Debug.Log("anim pass");
 			
 			if(index >= 6)
             {
 				KnockBackSystem.Instance.AntidoteCreated();
+				LeanTween.delayedCall(2f, () => { Scenes_Test.Instance.LoadEndScene(); });
 			}
 			else
             {

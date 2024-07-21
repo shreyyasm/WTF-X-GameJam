@@ -67,6 +67,10 @@ public class KnockBackSystem : MonoBehaviour
     public void AntidoteCreated()
     {
         Instantiate(AntidoteCreatedVFX, MixingMachinePos.transform.position, Quaternion.identity);
+        
+    }
+    public void AntidoteSound()
+    {
         SoundManager.Instance.AntidoteCreated();
     }
     public GameObject GameOverCanvas;

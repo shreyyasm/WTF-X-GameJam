@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
 		//	EndDialogue();
 
 		//}
-		if (Input.GetKeyDown(KeyCode.F) && Player.Instance.Narrating)
+		if (Input.GetKeyDown(KeyCode.Return) && Player.Instance.Narrating)
 			SkipNarration();
 
 
