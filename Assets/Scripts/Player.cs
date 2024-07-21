@@ -2,7 +2,7 @@ using SUPERCharacter;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
@@ -33,8 +33,20 @@ public class Player : MonoBehaviour
     public bool machineRun = false;
 
     public bool Narrating = false;
+    private string chemicalName = " ";
     void Update()
     {
+        if(holding)
+        {
+            TesttubeLiquid.transform.GetChild(0).transform.gameObject.SetActive(true);
+            TesttubeLiquid.transform.GetChild(0).GetComponent<TextMeshPro>().text = chemicalName;
+
+        }
+        else
+        {
+            TesttubeLiquid.transform.GetChild(0).transform.gameObject.SetActive(false);
+        }
+
         if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Anim.GetCurrentAnimatorStateInfo(0).IsName("PROTO BONE|Jump"))
         {
             Anim.SetBool("Jump", false);
@@ -62,7 +74,10 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !holding && touchBeaker)
         {
+            
             data = refObject.gameObject.GetComponent<Beaker>().GetData();
+            chemicalName = refObject.gameObject.GetComponent<Beaker>().GetName();
+            Debug.Log(chemicalName);
             KnockBackSystem.Instance.ChemicalPickup(transform);
             
             TesttubeLiquid.GetComponent<Renderer>().material.SetColor("_sidecolour", refObject.GetComponentInChildren<Renderer>().material.GetColor("_sidecolour"));
@@ -75,8 +90,8 @@ public class Player : MonoBehaviour
                 InteractUI.SetActive(false);
                 dialogueTrigger2.TriggerDialogue();
                 Narration.Instance.NarrationCall2();
-                Player.Instance.playerDead = true;
-                GetComponent<Rigidbody>().isKinematic = true;
+                //Player.Instance.playerDead = true;
+                //GetComponent<Rigidbody>().isKinematic = true;
                 LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; Narrating = false; });
                 Anim.SetBool("Idle", true);
                 Anim.SetBool("Walk", false);
@@ -158,8 +173,8 @@ public class Player : MonoBehaviour
                 InteractUI.SetActive(false);
                 dialogueTrigger3.TriggerDialogue();
                 Narration.Instance.NarrationCall3();
-                Player.Instance.playerDead = true;
-                GetComponent<Rigidbody>().isKinematic = true;
+                //Player.Instance.playerDead = true;
+                //GetComponent<Rigidbody>().isKinematic = true;
                 LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; Narrating = false; });
                 Anim.SetBool("Idle", true);
                 Anim.SetBool("Walk", false);

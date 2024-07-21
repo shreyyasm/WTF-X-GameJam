@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip AntidoteCreatedSFX;
 
     public AudioClip machineTurnOnSFX;
+
+    public AudioClip RotationSFX;
     // [SerializeField] AudioClip punchSFX;
     //[SerializeField] AudioClip punchSFX;
 
@@ -31,33 +33,39 @@ public class SoundManager : MonoBehaviour
     {
 
     }
+   
     public void ChemicalPickup()
     {
-        AudioSource.PlayClipAtPoint(ChemicalPickupSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(ChemicalPickupSFX, 1f);
     }
     public void ChemicalDrop()
     {
-        AudioSource.PlayClipAtPoint(ChemicalDropSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(ChemicalDropSFX, 1f);
     }
     public void WrongCompund()
     {
-        AudioSource.PlayClipAtPoint(WrongCompundSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(WrongCompundSFX, 1f);
+        Narration.Instance.audioSource.PlayOneShot(TestubeBurstSFX, 1f);
     }
     public void RightCompund()
     {
-        AudioSource.PlayClipAtPoint(RightCompundSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(RightCompundSFX, 1f);
     }
     public void ChemicalRinse()
     {
-        AudioSource.PlayClipAtPoint(ChemicalRinseSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(ChemicalRinseSFX,  1f);
     }
     public void TestTubeBurst()
     {
-        AudioSource.PlayClipAtPoint(TestubeBurstSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(TestubeBurstSFX, 1f);
     }
     public void AntidoteCreated()
     {
-        AudioSource.PlayClipAtPoint(AntidoteCreatedSFX, Camera.main.transform.position, 1f);
+        Narration.Instance.audioSource.PlayOneShot(AntidoteCreatedSFX,  1f);
+    }
+    public void Rotationn()
+    {
+        Narration.Instance.audioSource.PlayOneShot(RotationSFX, 1f);
     }
     public void CallKeyPressSFX()
     {

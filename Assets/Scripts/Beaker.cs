@@ -8,10 +8,12 @@ public class Beaker : MonoBehaviour
     
     [SerializeField]private int data;
     public GameObject liquid ;
+    private string chemicalName = " ";
     
     public void SetData(int d,string s)
     {
         data = d;
+        chemicalName = s;
         GetComponentInChildren<TMP_Text>().text = s;
 
         liquid.GetComponent<Renderer>().material.SetColor("_sidecolour", Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
@@ -22,6 +24,9 @@ public class Beaker : MonoBehaviour
     {
         return data;
     }
-    
+    public string GetName()
+    {
+        return chemicalName;
+    }
 
 }

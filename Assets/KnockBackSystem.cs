@@ -43,6 +43,7 @@ public class KnockBackSystem : MonoBehaviour
     public void WrongCompund()
     {
         Instantiate(WrongCompundVFX, MixingMachinePos.transform.position, Quaternion.identity);
+        Instantiate(TestubeBurstVFX, MixingMachinePos.transform.position, Quaternion.identity);
         SoundManager.Instance.WrongCompund();
     }
     public void RightCompund()

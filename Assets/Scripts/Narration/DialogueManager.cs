@@ -20,6 +20,12 @@ public class DialogueManager : MonoBehaviour
 	public DialogueTrigger dialogueTrigger4;
 	public Image  BgBlack;
 
+	public GameObject greenBoardCam;
+	public GameObject LabCam;
+	public GameObject playerCam;
+	public GameObject vortexCam;
+	public GameObject player;
+	public AudioSource audioSource;
 	bool start;
     private void Awake()
     {
@@ -28,12 +34,43 @@ public class DialogueManager : MonoBehaviour
 		sentences = new Queue<string>();
 		
 	}
+	private void Update()
+	{
+
+		//if (sentences.Count == 0 && start)
+		//{
+		//	EndDialogue();
+
+		//}
+		if (Input.GetKeyDown(KeyCode.F) && Player.Instance.Narrating)
+			SkipNarration();
+
+
+	}
+	public bool skipped;
+	public void SkipNarration()
+    {
+		skipped = true;
+		EndDialogue();
+		DisplayNextSentence();
+		Player.Instance.playerDead = false;
+		player.GetComponent<Rigidbody>().isKinematic = false;
+		Player.Instance.Narrating = false;
+		audioSource.Stop();
+		LabCam.SetActive(false);
+		greenBoardCam.SetActive(false);
+		vortexCam.SetActive(false);
+		playerCam.SetActive(true);
+
+	}
     // Use this for initialization
     void Start()
 	{
-		LeanTween.delayedCall(0.2f, () => { Player.Instance.playerDead = true; dialogueTrigger1.TriggerDialogue(); });
-		
-		LeanTween.delayedCall(20f, () => { EndDialogue(); Player.Instance.playerDead = false; });
+		LeanTween.delayedCall(0.2f, () => { Player.Instance.playerDead = true; dialogueTrigger1.TriggerDialogue(); Player.Instance.Narrating = true; });
+		LeanTween.delayedCall(6f, () => { if (!skipped) { greenBoardCam.SetActive(false); LabCam.SetActive(true); }  });
+		LeanTween.delayedCall(15f, () => { if (!skipped) { LabCam.SetActive(false); vortexCam.SetActive(true); }   });
+		LeanTween.delayedCall(20f, () => { if (!skipped) { vortexCam.SetActive(false); playerCam.SetActive(true); }  });
+		LeanTween.delayedCall(20f, () => { EndDialogue(); Player.Instance.playerDead = false; Player.Instance.Narrating = false; });
 	}
 
 	public void StartDialogue(Dialogue dialogue)
@@ -100,14 +137,5 @@ public class DialogueManager : MonoBehaviour
 		
 
     }
-    private void Update()
-    {
-
-		//if (sentences.Count == 0 && start)
-		//{
-		//	EndDialogue();
-
-		//}
-
-	}
+    
 }

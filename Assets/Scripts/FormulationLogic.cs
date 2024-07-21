@@ -35,11 +35,24 @@ public class FormulationLogic : MonoBehaviour
 	{
 		if (VortexAnim)
 		{
-			VortexPivot.transform.Rotate(0, 10f, 0, Space.World);
+			VortexPivot.transform.Rotate(0, 20f, 0, Space.World);
 		}
 
 	}
-	public GameObject MachineTT;
+	bool Introduced;
+    private void Update()
+    {
+        if(Player.Instance.Narrating && Introduced)
+        {
+			laser.SetActive(false);
+        }
+		if(!Player.Instance.Narrating && Introduced)
+		{
+			
+			laser.SetActive(true); ;
+		}
+    }
+    public GameObject MachineTT;
 	public int SetChemicals()
 	{
 
@@ -88,6 +101,8 @@ public class FormulationLogic : MonoBehaviour
 	public bool machineRun = false;
 	public DialogueTrigger dialogueTrigger4;
 	public Player playerScript;
+	public GameObject laserCam;
+	public GameObject laser;
 	
 	public void Check(int input,Color colour)
 	{
@@ -111,14 +126,17 @@ public class FormulationLogic : MonoBehaviour
 					Player.Instance.machineRun = true;
 					dialogueTrigger4.TriggerDialogue();
 					Narration.Instance.NarrationCall4();
-					Player.Instance.playerDead = true;
-					LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; Player.Instance.Narrating = false; });
+					//Player.Instance.playerDead = true;
+					LeanTween.delayedCall(8f, () => { laserCam.SetActive(false); DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; Player.Instance.Narrating = false; Introduced = true; });
 					Player.Instance.InteractUI.SetActive(false);
-					playerScript.GetComponent<Rigidbody>().isKinematic = true;
+					//playerScript.GetComponent<Rigidbody>().isKinematic = true;
 
 					playerScript.Anim.SetBool("Idle", true);
 					playerScript.Anim.SetBool("Walk", false);
 
+					laser.SetActive(true);
+					laserCam.SetActive(true);
+					
 					machineRun = true;
 
 				});
@@ -151,7 +169,8 @@ public class FormulationLogic : MonoBehaviour
 	private IEnumerator MachineAnimation(int i)
 	{
 		VortexAnim = true;
-		yield return new WaitForSeconds(6f);
+		SoundManager.Instance.Rotationn();
+		yield return new WaitForSeconds(3f);
 		VortexAnim = false;
 		if (i == 0)
 		{
