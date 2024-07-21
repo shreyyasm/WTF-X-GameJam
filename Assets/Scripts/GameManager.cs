@@ -53,9 +53,9 @@ public class GameManager : MonoBehaviour
     }
     public void GotoMainMenu()
     {
-        SceneManager.LoadScene(0);
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.UnloadSceneAsync(currentIndex);
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
+        //int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        //SceneManager.UnloadSceneAsync(currentIndex);
         //LeanTween.delayedCall(8f, () => { anim.SetBool("Idle", false); });
         
     }
@@ -101,6 +101,10 @@ public class GameManager : MonoBehaviour
     {
         creditsScreen.SetActive(true);
         MainScreen.SetActive(false);
+    }
+    public void EndScene()
+    {
+        SceneManager.LoadScene(3);
     }
     public void CloseCredits()
     {

@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 3025064637051673581}
   - component: {fileID: 3707180637831644501}
   - component: {fileID: 8980210307494715704}
-  - component: {fileID: 7529840380014635912}
   m_Layer: 0
   m_Name: conicalflask
   m_TagString: Untagged
@@ -440,20 +439,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6769326874758774904, guid: 0118a1efc31301c48b0d1dfd4a722aa0, type: 3}
---- !u!114 &7529840380014635912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798300312648069481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8b328d7b41f031848182c121f626bc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  liquid: {fileID: 0}
 --- !u!1 &3954559366639709143
 GameObject:
   m_ObjectHideFlags: 0
