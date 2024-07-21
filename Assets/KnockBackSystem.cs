@@ -65,4 +65,27 @@ public class KnockBackSystem : MonoBehaviour
         Instantiate(AntidoteCreatedVFX, Position.position, Quaternion.identity);
         SoundManager.Instance.AntidoteCreated();
     }
+    public GameObject GameOverCanvas;
+    bool dead = false;
+    public void PlayerDie()
+    {
+        if(!dead)
+        {
+            Instantiate(TestubeBurstVFX, transform.position, Quaternion.identity);
+            SoundManager.Instance.TestTubeBurst();
+            
+            StartCoroutine(Gameover());
+            dead = true;
+        }
+       
+    }
+    IEnumerator Gameover()
+    {
+        yield return new WaitForSeconds(7f);
+        GameOverCanvas.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        //Time.timeScale = 0;
+    }
+
 }
