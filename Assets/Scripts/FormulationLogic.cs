@@ -35,11 +35,36 @@ public class FormulationLogic : MonoBehaviour
 	{
 		if (VortexAnim)
 		{
-			VortexPivot.transform.Rotate(0, 10f, 0, Space.World);
+			VortexPivot.transform.Rotate(0, 20f, 0, Space.World);
 		}
-
+		
 	}
-	public GameObject MachineTT;
+	bool Introduced;
+    private void Update()
+    {
+		board_placeholder[index].fontStyle = FontStyles.Underline;
+
+		//for (int i = 0; i <= index; i++)
+		//{
+		//	//board_placeholder[i].color = new Color(0, 1, 0, 1);
+		//}
+		//for (int i = index; i <= 5; i++)
+		//{
+		//	board_placeholder[index].fontStyle = FontStyles.Underline;
+		//	//board_placeholder[i].color = new Color(1, 1, 1, 1);
+
+		//}
+		if (Player.Instance.Narrating && Introduced)
+        {
+			laser.SetActive(false);
+        }
+		if(!Player.Instance.Narrating && Introduced)
+		{
+			
+			laser.SetActive(true); ;
+		}
+    }
+    public GameObject MachineTT;
 	public int SetChemicals()
 	{
 
@@ -88,10 +113,13 @@ public class FormulationLogic : MonoBehaviour
 	public bool machineRun = false;
 	public DialogueTrigger dialogueTrigger4;
 	public Player playerScript;
+	public GameObject laserCam;
+	public GameObject laser;
+	
 	public void Check(int input,Color colour)
 	{
 
-		checkset[index] = serial_no[index];
+		checkset[index % 2] = serial_no[index];
 		MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
 		//Color col = PlayerTestTube.GetComponent<Renderer>().material.GetColor("_sidecolour");
 		Debug.Log(colour);
@@ -99,24 +127,28 @@ public class FormulationLogic : MonoBehaviour
 		MachineTestTube[index].GetComponent<Renderer>().material.SetColor("_topcolour", colour);
 
 
-		chemicalset[index] = input;
+		chemicalset[index & 2] = input;
 		if ((index + 1) % 2 == 0)
 		{
 			if (!Player.Instance.machineRun)
 			{
 				LeanTween.delayedCall(10f, () =>
 				{
+					Player.Instance.Narrating = true;
 					Player.Instance.machineRun = true;
 					dialogueTrigger4.TriggerDialogue();
 					Narration.Instance.NarrationCall4();
-					Player.Instance.playerDead = true;
-					LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; });
-
-					playerScript.GetComponent<Rigidbody>().isKinematic = true;
+					//Player.Instance.playerDead = true;
+					LeanTween.delayedCall(8f, () => { laserCam.SetActive(false); DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; Player.Instance.Narrating = false; Introduced = true; });
+					Player.Instance.InteractUI.SetActive(false);
+					//playerScript.GetComponent<Rigidbody>().isKinematic = true;
 
 					playerScript.Anim.SetBool("Idle", true);
 					playerScript.Anim.SetBool("Walk", false);
 
+					laser.SetActive(true);
+					laserCam.SetActive(true);
+					
 					machineRun = true;
 
 				});
@@ -125,17 +157,18 @@ public class FormulationLogic : MonoBehaviour
 			{
 				StartCoroutine(MachineAnimation(1));
 				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
-				
+				board_placeholder[index].color = new Color(0, 1, 0, 1);
+				board_placeholder[index-1].color = new Color(0, 1, 0, 1);
 				index++;
 				
 			}
 			else
 			{
 				StartCoroutine(MachineAnimation(0));
-				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
-				//KnockBackSystem.Instance.WrongCompund();
-				
-				Debug.Log("Failed");
+                //MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
+                //KnockBackSystem.Instance.WrongCompund();
+                
+                Debug.Log("Failed");
 				//index--;
 			}
 		}
@@ -148,8 +181,10 @@ public class FormulationLogic : MonoBehaviour
 	}
 	private IEnumerator MachineAnimation(int i)
 	{
+
 		VortexAnim = true;
-		yield return new WaitForSeconds(6f);
+		SoundManager.Instance.Rotationn();
+		yield return new WaitForSeconds(3f);
 		VortexAnim = false;
 		if (i == 0)
 		{
@@ -158,6 +193,13 @@ public class FormulationLogic : MonoBehaviour
 			Debug.Log("anim fail");
 			KnockBackSystem.Instance.WrongCompund();
 			index--;
+		
+			for (int f = index + 1; f <= 5; f++)
+			{
+				board_placeholder[f].fontStyle &= ~FontStyles.Underline;
+				//board_placeholder[i].color = new Color(1, 1, 1, 1);
+
+			}
 		}
 		else if (i == 1)
 		{

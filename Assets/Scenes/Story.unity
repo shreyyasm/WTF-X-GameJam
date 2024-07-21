@@ -610,11 +610,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1a8ebfbb107fee84ea7c7db1b283d586, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.08
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1230,6 +1230,13 @@ MonoBehaviour:
   dialogueTrigger3: {fileID: 0}
   dialogueTrigger4: {fileID: 0}
   BgBlack: {fileID: 0}
+  greenBoardCam: {fileID: 0}
+  LabCam: {fileID: 0}
+  playerCam: {fileID: 0}
+  vortexCam: {fileID: 0}
+  player: {fileID: 0}
+  audioSource: {fileID: 0}
+  skipped: 0
   speed: 0.08
   gameManager: {fileID: 203601391}
 --- !u!4 &259762946
@@ -1590,7 +1597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &325002624
 Transform:
   m_ObjectHideFlags: 0
@@ -5426,6 +5433,8 @@ MonoBehaviour:
   machineRun: 0
   dialogueTrigger4: {fileID: 0}
   playerScript: {fileID: 0}
+  laserCam: {fileID: 0}
+  laser: {fileID: 0}
 --- !u!114 &1440852493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6839,8 +6848,8 @@ Transform:
   m_GameObject: {fileID: 1763110663}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7052328, y: -0.000025173682, z: 0.00002507914, w: 0.7089759}
-  m_LocalPosition: {x: -0.00011485984, y: -0.012442694, z: 0.0069096223}
-  m_LocalScale: {x: 0.001288909, y: 0.00008592729, z: 0.0010534812}
+  m_LocalPosition: {x: -0.00058, y: -0.01244, z: 0.00691}
+  m_LocalScale: {x: 0.0013995477, y: 0.00008592729, z: 0.0010534812}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 541733734}
@@ -7751,6 +7760,8 @@ MonoBehaviour:
   Narration2: {fileID: 8300000, guid: 0bfa762b73aed8f4eac05f55a9649a52, type: 3}
   Narration3: {fileID: 8300000, guid: 1e381df5dedb60744b9ddde615a96e34, type: 3}
   Narration4: {fileID: 8300000, guid: 1f5e029784363ba40a673932bc48b839, type: 3}
+  audioSource: {fileID: 0}
+  CAMERA: {fileID: 0}
 --- !u!82 &2081905699
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8057,6 +8068,7 @@ MonoBehaviour:
   ChemicalRinseVFX: {fileID: 5959365484119832395, guid: 848c687f98306a04d84da9ab70b2f5fc, type: 3}
   TestubeBurstVFX: {fileID: 1102658220106295552, guid: 386de7e5b8a7a2342844496f8cb7377c, type: 3}
   AntidoteCreatedVFX: {fileID: 2336573754078046395, guid: dd65ff4b89c218741b49af1c4002a5d3, type: 3}
+  wrongVFX: {fileID: 0}
   GameOverCanvas: {fileID: 0}
 --- !u!114 &2081905702
 MonoBehaviour:
@@ -8078,6 +8090,7 @@ MonoBehaviour:
   ChemicalTaken: 0
   PipeWalk: 0
   machineRun: 0
+  Narrating: 0
   GM: {fileID: 0}
   holding: 0
   data: 0
@@ -8146,8 +8159,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081905697}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15984422, y: -0.4785001, z: 0.27356628, w: -0.8189316}
-  m_LocalPosition: {x: -86.47, y: 36.52, z: 172.57}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -89.85, y: 20.07, z: 120.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8157,7 +8170,7 @@ Transform:
   - {fileID: 882136022}
   - {fileID: 325002624}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 420.595, z: -36.944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115451970
 GameObject:
   m_ObjectHideFlags: 0

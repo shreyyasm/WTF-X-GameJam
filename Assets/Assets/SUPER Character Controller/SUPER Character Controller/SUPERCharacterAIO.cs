@@ -429,10 +429,19 @@ public class SUPERCharacterAIO : MonoBehaviour{
             mouseScrollWheel = Mouse.current.scroll.y.ReadValue()/1000;
             if(perspectiveSwitchingKey!=Key.None)perspecTog = Keyboard.current[perspectiveSwitchingKey].wasPressedThisFrame;
             if(interactKey!=Key.None)interactInput = Keyboard.current[interactKey].wasPressedThisFrame;
-            //movement
+                //movement
 
-             if(jumpKey!=Key.None)jumpInput_Momentary =  Keyboard.current[jumpKey].isPressed;
-             if(jumpKey!=Key.None)jumpInput_FrameOf =  Keyboard.current[jumpKey].wasPressedThisFrame;
+                if (jumpKey != Key.None) 
+                {
+                    jumpInput_Momentary = Keyboard.current[jumpKey].isPressed;
+                    
+                }
+
+                if (jumpKey != Key.None)
+                {
+                    jumpInput_FrameOf = Keyboard.current[jumpKey].wasPressedThisFrame;
+                    //SoundManager.Instance.JumpSFX();
+                } 
 
              if(crouchKey!=Key.None){
                 crouchInput_Momentary =  Keyboard.current[crouchKey].isPressed;
