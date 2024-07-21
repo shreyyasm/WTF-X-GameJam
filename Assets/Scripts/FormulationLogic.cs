@@ -14,7 +14,10 @@ public class FormulationLogic : MonoBehaviour
 
 	[SerializeField] private int[] chemicalset = new int[2];
 	[SerializeField] private int[] checkset = new int[2];
-	public void Start()
+
+  
+
+    public void Start()
 	{
 		foreach(Transform b in Beakers.transform)
 		{
@@ -24,7 +27,7 @@ public class FormulationLogic : MonoBehaviour
 		SetChemicals();
 	}
 
-	
+	public GameObject MachineTT;
 	public int SetChemicals()
 	{
 
@@ -69,7 +72,8 @@ public class FormulationLogic : MonoBehaviour
 
 		return 0;
 	}
-	 
+	public bool machineRun = false;
+	public DialogueTrigger dialogueTrigger4;
 	public void Check(int input)
 	{
 
@@ -77,18 +81,34 @@ public class FormulationLogic : MonoBehaviour
 		chemicalset[index] = input;
 		if ((index + 1) % 2 == 0)
 		{
+			if (!machineRun)
+			{
+
+				dialogueTrigger4.TriggerDialogue();
+				Narration.Instance.NarrationCall4();
+				Player.Instance.playerDead = true;
+				LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; });
+				machineRun = true;
+
+			}
 			if (checkset[0] == chemicalset[0] && checkset[1] == chemicalset[1])
 			{
+				MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+				KnockBackSystem.Instance.RightCompund();
 				index++;
+
 			}
 			else
 			{
+				MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
+				KnockBackSystem.Instance.WrongCompund();
 				Debug.Log("Failed");
 				index--;
 			}
 		}
 		else
 		{
+			MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
 			index++;
 		}
 
