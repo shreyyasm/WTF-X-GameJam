@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
 	public void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
-		StartCoroutine(ChangeScene());
+		//StartCoroutine(ChangeScene());
 	}
 	IEnumerator ChangeScene()
     {
