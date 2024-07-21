@@ -74,6 +74,7 @@ public class FormulationLogic : MonoBehaviour
 	}
 	public bool machineRun = false;
 	public DialogueTrigger dialogueTrigger4;
+	public Player playerScript;
 	public void Check(int input)
 	{
 
@@ -81,15 +82,24 @@ public class FormulationLogic : MonoBehaviour
 		chemicalset[index] = input;
 		if ((index + 1) % 2 == 0)
 		{
-			if (!machineRun)
+			if (!Player.Instance.machineRun)
 			{
+				LeanTween.delayedCall(5f, () =>
+				{
+					Player.Instance.machineRun = true;
+					dialogueTrigger4.TriggerDialogue();
+					Narration.Instance.NarrationCall4();
+					Player.Instance.playerDead = true;
+					LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; });
 
-				dialogueTrigger4.TriggerDialogue();
-				Narration.Instance.NarrationCall4();
-				Player.Instance.playerDead = true;
-				LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; });
-				machineRun = true;
+					playerScript.GetComponent<Rigidbody>().isKinematic = true;
 
+					playerScript.Anim.SetBool("Idle", true);
+					playerScript.Anim.SetBool("Walk", false);
+
+					machineRun = true;
+
+				});
 			}
 			if (checkset[0] == chemicalset[0] && checkset[1] == chemicalset[1])
 			{
@@ -101,7 +111,8 @@ public class FormulationLogic : MonoBehaviour
 			else
 			{
 				MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
-				KnockBackSystem.Instance.WrongCompund();
+				//KnockBackSystem.Instance.WrongCompund();
+				KnockBackSystem.Instance.RightCompund();
 				Debug.Log("Failed");
 				index--;
 			}

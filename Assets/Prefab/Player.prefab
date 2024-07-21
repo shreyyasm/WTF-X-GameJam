@@ -827,7 +827,6 @@ GameObject:
   - component: {fileID: 2274731843458827559}
   - component: {fileID: 1544939358508233996}
   - component: {fileID: 1362488323747437537}
-  - component: {fileID: 2949610281940762495}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -921,7 +920,10 @@ MonoBehaviour:
   InteractUI: {fileID: 4104233831770876844}
   Anim: {fileID: 5847757903400685955}
   playerDead: 0
-  TesttubeLiquid: {fileID: 3119176434351564949}
+  TesttubeLiquid: {fileID: 6154180234644855001}
+  ChemicalTaken: 0
+  PipeWalk: 0
+  machineRun: 0
   GM: {fileID: 0}
   holding: 0
   data: 0
@@ -929,6 +931,9 @@ MonoBehaviour:
   touchMachine: 0
   touchSink: 0
   refObject: {fileID: 0}
+  dialogueTrigger2: {fileID: 0}
+  dialogueTrigger3: {fileID: 0}
+  dialogueTrigger4: {fileID: 0}
 --- !u!114 &2274731843458827559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,24 +1241,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2949610281940762495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3107428706696893800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3ad6d5e63611748a18f97cdccc4dca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Narration1: {fileID: 8300000, guid: 8069eb6d05f561846b489fd2845db430, type: 3}
-  Narration2: {fileID: 8300000, guid: 0bfa762b73aed8f4eac05f55a9649a52, type: 3}
-  Narration3: {fileID: 8300000, guid: 1e381df5dedb60744b9ddde615a96e34, type: 3}
-  Narration4: {fileID: 8300000, guid: 1f5e029784363ba40a673932bc48b839, type: 3}
-  Narration5: {fileID: 8300000, guid: 7784c070985bc244caf8310856cbdeaf, type: 3}
-  Narration6: {fileID: 8300000, guid: bee093cff4ec85c488c6f50704aee759, type: 3}
 --- !u!1 &3503920124021784975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +1975,89 @@ Transform:
   - {fileID: 8862024175331758051}
   m_Father: {fileID: 4102301433877490573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6154180234644855001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8830801196372671397}
+  - component: {fileID: 1354619810044160858}
+  - component: {fileID: 6271587035847921785}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8830801196372671397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154180234644855001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2306505862186480175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1354619810044160858
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154180234644855001}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3c3b7d929c71b094f853edcdb58011f6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &6271587035847921785
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154180234644855001}
+  m_Mesh: {fileID: -5541741725876897211, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
 --- !u!1 &6233003134096747641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,6 +3107,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3316d5c28c43a3643bd74f6469f0e133, type: 2}
@@ -3050,17 +3124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8830801196372671397}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
 --- !u!4 &2306505862186480175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
-  m_PrefabInstance: {fileID: 2848777045029574084}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3119176434351564949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 539cb21c88d663a48b15053f3e2eac3a, type: 3}
   m_PrefabInstance: {fileID: 2848777045029574084}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6376349764795408437

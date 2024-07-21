@@ -76,6 +76,8 @@ public class Player : MonoBehaviour
                 Player.Instance.playerDead = true;
                 GetComponent<Rigidbody>().isKinematic = true;
                 LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                Anim.SetBool("Idle", true);
+                Anim.SetBool("Walk", false);
                 ChemicalTaken = true;
             }
 
@@ -94,12 +96,7 @@ public class Player : MonoBehaviour
             GM.MachineTT.GetComponent<Renderer>().material.SetColor("_sidecolour", chemcolor);
             GM.MachineTT.GetComponent<Renderer>().material.SetColor("_topcolour", chemcolor);
             GM.Check(data);
-            if (!machineRun)
-            {
-                
-                machineRun = true;
-                
-            }
+            
             //KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
@@ -154,8 +151,11 @@ public class Player : MonoBehaviour
             {
                 dialogueTrigger3.TriggerDialogue();
                 Narration.Instance.NarrationCall3();
-               // Player.Instance.playerDead = true;
-                LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; });
+                Player.Instance.playerDead = true;
+                GetComponent<Rigidbody>().isKinematic = true;
+                LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                Anim.SetBool("Idle", true);
+                Anim.SetBool("Walk", false);
                 PipeWalk = true;
             }
             
