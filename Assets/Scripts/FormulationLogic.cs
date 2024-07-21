@@ -15,10 +15,15 @@ public class FormulationLogic : MonoBehaviour
 	[SerializeField] private int[] chemicalset = new int[2];
 	[SerializeField] private int[] checkset = new int[2];
 
-  
+	public GameObject PlayerTestTube;
+	public GameObject[] MachineTestTube;
+	public GameObject VortexPivot;
+	private Vector3 VortexPos;
+	public bool VortexAnim;
 
-    public void Start()
+	public void Start()
 	{
+		VortexAnim = false;
 		foreach(Transform b in Beakers.transform)
 		{
 			beaker_placeholder.Add(b.GetComponent<Beaker>());
@@ -26,7 +31,14 @@ public class FormulationLogic : MonoBehaviour
 		
 		SetChemicals();
 	}
+	private void FixedUpdate()
+	{
+		if (VortexAnim)
+		{
+			VortexPivot.transform.Rotate(0, 10f, 0, Space.World);
+		}
 
+	}
 	public GameObject MachineTT;
 	public int SetChemicals()
 	{
@@ -72,19 +84,27 @@ public class FormulationLogic : MonoBehaviour
 
 		return 0;
 	}
+
 	public bool machineRun = false;
 	public DialogueTrigger dialogueTrigger4;
 	public Player playerScript;
-	public void Check(int input)
+	public void Check(int input,Color colour)
 	{
 
 		checkset[index] = serial_no[index];
+		MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+		//Color col = PlayerTestTube.GetComponent<Renderer>().material.GetColor("_sidecolour");
+		Debug.Log(colour);
+		MachineTestTube[index].GetComponent<Renderer>().material.SetColor("_sidecolour", colour);
+		MachineTestTube[index].GetComponent<Renderer>().material.SetColor("_topcolour", colour);
+
+
 		chemicalset[index] = input;
 		if ((index + 1) % 2 == 0)
 		{
 			if (!Player.Instance.machineRun)
 			{
-				LeanTween.delayedCall(5f, () =>
+				LeanTween.delayedCall(10f, () =>
 				{
 					Player.Instance.machineRun = true;
 					dialogueTrigger4.TriggerDialogue();
@@ -103,28 +123,58 @@ public class FormulationLogic : MonoBehaviour
 			}
 			if (checkset[0] == chemicalset[0] && checkset[1] == chemicalset[1])
 			{
-				MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
-				KnockBackSystem.Instance.RightCompund();
+				StartCoroutine(MachineAnimation(1));
+				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+				
 				index++;
-
+				
 			}
 			else
 			{
-				MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
+				StartCoroutine(MachineAnimation(0));
+				//MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.5f);
 				//KnockBackSystem.Instance.WrongCompund();
-				KnockBackSystem.Instance.RightCompund();
+				
 				Debug.Log("Failed");
-				index--;
+				//index--;
 			}
 		}
 		else
 		{
-			MachineTT.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+			MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
 			index++;
 		}
 
 	}
-
+	private IEnumerator MachineAnimation(int i)
+	{
+		VortexAnim = true;
+		yield return new WaitForSeconds(6f);
+		VortexAnim = false;
+		if (i == 0)
+		{
+			MachineTestTube[index - 1].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+			MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 1f);
+			Debug.Log("anim fail");
+			KnockBackSystem.Instance.WrongCompund();
+			index--;
+		}
+		else if (i == 1)
+		{
+			MachineTestTube[index - 1].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
+			MachineTestTube[index].GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
+			Debug.Log("anim pass");
+			
+			if(index >= 6)
+            {
+				KnockBackSystem.Instance.AntidoteCreated();
+			}
+			else
+            {
+				KnockBackSystem.Instance.RightCompund();
+			}
+		}
+	}
 	void Shuffle<T>(List<T> list)
 	{
 		System.Random random = new System.Random();

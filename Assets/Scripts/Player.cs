@@ -71,14 +71,14 @@ public class Player : MonoBehaviour
             //Debug.Log(refObject.GetComponent<Beaker>().liquid.GetComponent<Renderer>().material.GetColor("_sidecolour"));
             if(!ChemicalTaken)
             {
-                dialogueTrigger2.TriggerDialogue();
-                Narration.Instance.NarrationCall2();
-                Player.Instance.playerDead = true;
-                GetComponent<Rigidbody>().isKinematic = true;
-                LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
-                Anim.SetBool("Idle", true);
-                Anim.SetBool("Walk", false);
-                ChemicalTaken = true;
+                //dialogueTrigger2.TriggerDialogue();
+                //Narration.Instance.NarrationCall2();
+                //Player.Instance.playerDead = true;
+                //GetComponent<Rigidbody>().isKinematic = true;
+                //LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                //Anim.SetBool("Idle", true);
+                //Anim.SetBool("Walk", false);
+                //ChemicalTaken = true;
             }
 
             holding = true;
@@ -92,10 +92,10 @@ public class Player : MonoBehaviour
             TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
 
             Color chemcolor = TesttubeLiquid.GetComponent<Renderer>().material.GetColor("_sidecolour");
-            Debug.Log("side color is " + chemcolor);
-            GM.MachineTT.GetComponent<Renderer>().material.SetColor("_sidecolour", chemcolor);
-            GM.MachineTT.GetComponent<Renderer>().material.SetColor("_topcolour", chemcolor);
-            GM.Check(data);
+            //Debug.Log("side color is " + chemcolor);
+            //GM.MachineTT.GetComponent<Renderer>().material.SetColor("_sidecolour", chemcolor);
+            //GM.MachineTT.GetComponent<Renderer>().material.SetColor("_topcolour", chemcolor);
+            GM.Check(data, chemcolor);
             
             //KnockBackSystem.Instance.ChemicalRinse();
             holding = false;

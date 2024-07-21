@@ -60,9 +60,9 @@ public class KnockBackSystem : MonoBehaviour
         Instantiate(TestubeBurstVFX, Position.position, Quaternion.identity);
         SoundManager.Instance.TestTubeBurst();
     }
-    public void AntidoteCreated(Transform Position)
+    public void AntidoteCreated()
     {
-        Instantiate(AntidoteCreatedVFX, Position.position, Quaternion.identity);
+        Instantiate(AntidoteCreatedVFX, MixingMachinePos.transform.position, Quaternion.identity);
         SoundManager.Instance.AntidoteCreated();
     }
     public GameObject GameOverCanvas;
