@@ -88,6 +88,7 @@ public class FormulationLogic : MonoBehaviour
 	public bool machineRun = false;
 	public DialogueTrigger dialogueTrigger4;
 	public Player playerScript;
+	
 	public void Check(int input,Color colour)
 	{
 
@@ -106,12 +107,13 @@ public class FormulationLogic : MonoBehaviour
 			{
 				LeanTween.delayedCall(10f, () =>
 				{
+					Player.Instance.Narrating = true;
 					Player.Instance.machineRun = true;
 					dialogueTrigger4.TriggerDialogue();
 					Narration.Instance.NarrationCall4();
 					Player.Instance.playerDead = true;
-					LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; });
-
+					LeanTween.delayedCall(8f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; playerScript.GetComponent<Rigidbody>().isKinematic = false; Player.Instance.Narrating = false; });
+					Player.Instance.InteractUI.SetActive(false);
 					playerScript.GetComponent<Rigidbody>().isKinematic = true;
 
 					playerScript.Anim.SetBool("Idle", true);

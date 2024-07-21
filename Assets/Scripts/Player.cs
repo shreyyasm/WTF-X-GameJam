@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public bool PipeWalk = false;
     public bool machineRun = false;
 
-
+    public bool Narrating = false;
     void Update()
     {
         if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Anim.GetCurrentAnimatorStateInfo(0).IsName("PROTO BONE|Jump"))
@@ -71,14 +71,16 @@ public class Player : MonoBehaviour
             //Debug.Log(refObject.GetComponent<Beaker>().liquid.GetComponent<Renderer>().material.GetColor("_sidecolour"));
             if(!ChemicalTaken)
             {
-                //dialogueTrigger2.TriggerDialogue();
-                //Narration.Instance.NarrationCall2();
-                //Player.Instance.playerDead = true;
-                //GetComponent<Rigidbody>().isKinematic = true;
-                //LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
-                //Anim.SetBool("Idle", true);
-                //Anim.SetBool("Walk", false);
-                //ChemicalTaken = true;
+                Narrating = true;
+                InteractUI.SetActive(false);
+                dialogueTrigger2.TriggerDialogue();
+                Narration.Instance.NarrationCall2();
+                Player.Instance.playerDead = true;
+                GetComponent<Rigidbody>().isKinematic = true;
+                LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; Narrating = false; });
+                Anim.SetBool("Idle", true);
+                Anim.SetBool("Walk", false);
+                ChemicalTaken = true;
             }
 
             holding = true;
@@ -132,28 +134,33 @@ public class Player : MonoBehaviour
         {
             touchBeaker = true;
             refObject = other.gameObject;
-            InteractUI.SetActive(true);        
+            if(!Narrating)
+                InteractUI.SetActive(true);        
         }
 
         if (other.CompareTag("Machine"))
         {
-            touchMachine = true;          
-            InteractUI.SetActive(true);
+            touchMachine = true;
+            if (!Narrating)
+                InteractUI.SetActive(true);
         }
         if (other.CompareTag("Sink"))
         {
-            touchSink = true;           
-            InteractUI.SetActive(true);
+            touchSink = true;
+            if (!Narrating)
+                InteractUI.SetActive(true);
         }
         if (other.CompareTag("Pipe"))
         {
             if(!PipeWalk)
             {
+                Narrating = true;
+                InteractUI.SetActive(false);
                 dialogueTrigger3.TriggerDialogue();
                 Narration.Instance.NarrationCall3();
                 Player.Instance.playerDead = true;
                 GetComponent<Rigidbody>().isKinematic = true;
-                LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; Narrating = false; });
                 Anim.SetBool("Idle", true);
                 Anim.SetBool("Walk", false);
                 PipeWalk = true;

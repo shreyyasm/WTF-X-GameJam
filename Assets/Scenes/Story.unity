@@ -610,11 +610,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1a8ebfbb107fee84ea7c7db1b283d586, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.08
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6839,8 +6839,8 @@ Transform:
   m_GameObject: {fileID: 1763110663}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7052328, y: -0.000025173682, z: 0.00002507914, w: 0.7089759}
-  m_LocalPosition: {x: -0.00011485984, y: -0.012442694, z: 0.0069096223}
-  m_LocalScale: {x: 0.001288909, y: 0.00008592729, z: 0.0010534812}
+  m_LocalPosition: {x: -0.00058, y: -0.01244, z: 0.00691}
+  m_LocalScale: {x: 0.0013995477, y: 0.00008592729, z: 0.0010534812}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 541733734}
@@ -8078,6 +8078,7 @@ MonoBehaviour:
   ChemicalTaken: 0
   PipeWalk: 0
   machineRun: 0
+  Narrating: 0
   GM: {fileID: 0}
   holding: 0
   data: 0

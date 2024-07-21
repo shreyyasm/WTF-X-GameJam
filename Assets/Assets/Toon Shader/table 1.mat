@@ -346,7 +346,7 @@ Material:
     - _Is_LightColor_AR: 0
     - _Is_LightColor_Ap_RimLight: 0
     - _Is_LightColor_Base: 1
-    - _Is_LightColor_HighColor: 1
+    - _Is_LightColor_HighColor: 0
     - _Is_LightColor_MatCap: 0
     - _Is_LightColor_Outline: 1
     - _Is_LightColor_RimLight: 1
@@ -379,7 +379,7 @@ Material:
     - _Offset_Z: 0
     - _OutlineOverridden: 0
     - _OutlineVisible: 1
-    - _Outline_Width: 100
+    - _Outline_Width: 70
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
