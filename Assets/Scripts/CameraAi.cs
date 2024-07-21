@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraAi : MonoBehaviour
 {
-  
     public Transform pos1;
     public Transform pos2;
 
@@ -77,10 +76,6 @@ public class CameraAi : MonoBehaviour
     public Vector3 direction;
     private float currentHitDistance;
 
-    public GameObject alarmLight;
-    public GameObject normalLight;
-    public AudioClip siren;
-    bool dead;
     public void Raycast()
     {
        
@@ -90,19 +85,6 @@ public class CameraAi : MonoBehaviour
         {
             currentHitObject = hit.transform.gameObject;
             currentHitDistance = hit.distance;
-            if(hit.collider.gameObject.CompareTag("Player") && !dead)
-            {
-                normalLight.SetActive(false);
-                alarmLight.SetActive(true);
-                AudioSource.PlayClipAtPoint(siren, Camera.main.transform.position, 0.4f);
-                Debug.Log("GameOver");
-                KnockBackSystem.Instance.PlayerDie();
-                Player.Instance.playerDead = true;
-                hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                hit.collider.gameObject.GetComponent<Player>().Anim.SetBool("Walk", false);
-                hit.collider.gameObject.GetComponent<Player>().Anim.SetBool("Idle", true);
-                dead = true;
-            }
 
         }
         else
@@ -110,10 +92,6 @@ public class CameraAi : MonoBehaviour
             currentHitDistance = maxDistance;
             currentHitObject = null;
         }
-
-    }
-    public void GameOver()
-    {
 
     }
     private void OnDrawGizmos()

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
     public SUPERCharacterAIO controller;
 
     //CanvasStuff
@@ -13,19 +12,17 @@ public class Player : MonoBehaviour
 
 
     public Animator Anim;
-    public bool playerDead;
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+        
     }
     // Start is called before the first frame update
     void Start()
     {
         holding = false;
     }
-    public GameObject TesttubeLiquid;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +30,7 @@ public class Player : MonoBehaviour
         {
             Anim.SetBool("Jump", false);
         }
-        if(controller.isIdle  && !playerDead)
+        if(controller.isIdle)
         {
             Anim.SetBool("Idle", true);
             Anim.SetBool("Walk", false);
@@ -41,14 +38,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(!playerDead)
-            {
-                Anim.SetBool("Idle", false);
-                Anim.SetBool("Walk", true);
-            }
-           
+            Anim.SetBool("Idle", false);
+            Anim.SetBool("Walk", true);
         }
-        if(controller.Jumped && !playerDead)
+        if(controller.Jumped)
         {
             Anim.SetBool("Jump", true);
             Anim.SetBool("Idle", false);
@@ -58,17 +51,12 @@ public class Player : MonoBehaviour
         {
             data = refObject.gameObject.GetComponent<Beaker>().GetData();
             KnockBackSystem.Instance.ChemicalPickup(transform);
-            
-            //TesttubeLiquid.GetComponent<Renderer>().material.SetColor("_sidecolour", refObject.GetComponentInChildren<Renderer>().material.GetColor("_sidecolour"));
-            TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.3f);
-            Debug.Log(refObject.GetComponent<Beaker>().liquid.GetComponent<Renderer>().material.GetColor("_sidecolour"));
             holding = true;
         }
         if (Input.GetKeyDown(KeyCode.E) && holding && touchMachine)
         {
             GM.Check(data);
             KnockBackSystem.Instance.ChemicalDrop(transform);
-            TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
             //KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
@@ -77,8 +65,6 @@ public class Player : MonoBehaviour
             KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
-        if (playerDead)
-            controller.enabled = false;
     }
     [SerializeField] private FormulationLogic GM;
 
@@ -87,7 +73,7 @@ public class Player : MonoBehaviour
     public bool touchBeaker;
     public bool touchMachine;
     public bool touchSink;
-    public GameObject refObject;
+    GameObject refObject;
 
     private void OnTriggerStay(Collider other)
     {

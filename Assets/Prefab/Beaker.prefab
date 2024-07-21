@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 3025064637051673581}
   - component: {fileID: 3707180637831644501}
   - component: {fileID: 8980210307494715704}
-  - component: {fileID: 7529840380014635912}
   m_Layer: 0
   m_Name: conicalflask
   m_TagString: Untagged
@@ -362,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 1798300312648069481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03161788, y: 0.517318, z: 0}
+  m_LocalPosition: {x: -0.03161788, y: 0.517318, z: -0.00000006555047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,20 +439,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6769326874758774904, guid: 0118a1efc31301c48b0d1dfd4a722aa0, type: 3}
---- !u!114 &7529840380014635912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798300312648069481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8b328d7b41f031848182c121f626bc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  liquid: {fileID: 0}
 --- !u!1 &3954559366639709143
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +782,7 @@ Transform:
   m_GameObject: {fileID: 6368710118300200873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03161788, y: 0.80876565, z: 0}
+  m_LocalPosition: {x: -0.03161788, y: 0.80876565, z: -0.00000006609881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1042,9 +1027,9 @@ Transform:
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 484535073016010884}
   - {fileID: 5694392235564212551}
   - {fileID: 7573378681695175207}
-  - {fileID: 484535073016010884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8603265491947171193
@@ -1067,7 +1052,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.67, z: 0}
 --- !u!114 &6557538033497716592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,4 +1066,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: 0
-  liquid: {fileID: 6368710118300200873}

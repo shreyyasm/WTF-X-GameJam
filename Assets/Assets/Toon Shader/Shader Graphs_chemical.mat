@@ -42,6 +42,6 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _Liquidlevel: 0.253
     m_Colors:
-    - _sidecolour: {r: 1, g: 1, b: 1, a: 1}
-    - _topcolour: {r: 1, g: 1, b: 1, a: 1}
+    - _sidecolour: {r: 0.56424236, g: 0, b: 1, a: 1}
+    - _topcolour: {r: 0.73991853, g: 0.40251565, b: 1, a: 1}
   m_BuildTextureStacks: []
