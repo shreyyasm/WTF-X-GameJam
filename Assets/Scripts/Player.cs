@@ -24,16 +24,22 @@ public class Player : MonoBehaviour
     void Start()
     {
         holding = false;
+        
     }
     public GameObject TesttubeLiquid;
     // Update is called once per frame
+    public bool ChemicalTaken = false;
+    public bool PipeWalk = false;
+    public bool machineRun = false;
+
+
     void Update()
     {
         if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Anim.GetCurrentAnimatorStateInfo(0).IsName("PROTO BONE|Jump"))
         {
             Anim.SetBool("Jump", false);
         }
-        if(controller.isIdle  && !playerDead)
+        if(controller.isIdle)
         {
             Anim.SetBool("Idle", true);
             Anim.SetBool("Walk", false);
@@ -59,26 +65,51 @@ public class Player : MonoBehaviour
             data = refObject.gameObject.GetComponent<Beaker>().GetData();
             KnockBackSystem.Instance.ChemicalPickup(transform);
             
-            //TesttubeLiquid.GetComponent<Renderer>().material.SetColor("_sidecolour", refObject.GetComponentInChildren<Renderer>().material.GetColor("_sidecolour"));
-            TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.3f);
-            Debug.Log(refObject.GetComponent<Beaker>().liquid.GetComponent<Renderer>().material.GetColor("_sidecolour"));
+            TesttubeLiquid.GetComponent<Renderer>().material.SetColor("_sidecolour", refObject.GetComponentInChildren<Renderer>().material.GetColor("_sidecolour"));
+            TesttubeLiquid.GetComponent<Renderer>().material.SetColor("_topcolour", refObject.GetComponentInChildren<Renderer>().material.GetColor("_topcolour"));
+            TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0.45f);
+            //Debug.Log(refObject.GetComponent<Beaker>().liquid.GetComponent<Renderer>().material.GetColor("_sidecolour"));
+            if(!ChemicalTaken)
+            {
+                //dialogueTrigger2.TriggerDialogue();
+                //Narration.Instance.NarrationCall2();
+                //Player.Instance.playerDead = true;
+                //GetComponent<Rigidbody>().isKinematic = true;
+                //LeanTween.delayedCall(20f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                //Anim.SetBool("Idle", true);
+                //Anim.SetBool("Walk", false);
+                //ChemicalTaken = true;
+            }
+
             holding = true;
+
         }
+
         if (Input.GetKeyDown(KeyCode.E) && holding && touchMachine)
         {
-            GM.Check(data);
+           
             KnockBackSystem.Instance.ChemicalDrop(transform);
             TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
+
+            Color chemcolor = TesttubeLiquid.GetComponent<Renderer>().material.GetColor("_sidecolour");
+            //Debug.Log("side color is " + chemcolor);
+            //GM.MachineTT.GetComponent<Renderer>().material.SetColor("_sidecolour", chemcolor);
+            //GM.MachineTT.GetComponent<Renderer>().material.SetColor("_topcolour", chemcolor);
+            GM.Check(data, chemcolor);
+            
             //KnockBackSystem.Instance.ChemicalRinse();
             holding = false;
         }
         if (Input.GetKeyDown(KeyCode.E) && holding && touchSink)
         {
             KnockBackSystem.Instance.ChemicalRinse();
+            TesttubeLiquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", 0f);
             holding = false;
         }
         if (playerDead)
             controller.enabled = false;
+        else
+            controller.enabled = true;
     }
     [SerializeField] private FormulationLogic GM;
 
@@ -88,6 +119,10 @@ public class Player : MonoBehaviour
     public bool touchMachine;
     public bool touchSink;
     public GameObject refObject;
+    public DialogueTrigger dialogueTrigger2;
+    public DialogueTrigger dialogueTrigger3;
+    public DialogueTrigger dialogueTrigger4;
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -109,6 +144,21 @@ public class Player : MonoBehaviour
         {
             touchSink = true;           
             InteractUI.SetActive(true);
+        }
+        if (other.CompareTag("Pipe"))
+        {
+            if(!PipeWalk)
+            {
+                dialogueTrigger3.TriggerDialogue();
+                Narration.Instance.NarrationCall3();
+                Player.Instance.playerDead = true;
+                GetComponent<Rigidbody>().isKinematic = true;
+                LeanTween.delayedCall(24f, () => { DialogueManager.Instance.EndDialogue(); Player.Instance.playerDead = false; GetComponent<Rigidbody>().isKinematic = false; });
+                Anim.SetBool("Idle", true);
+                Anim.SetBool("Walk", false);
+                PipeWalk = true;
+            }
+            
         }
 
     }

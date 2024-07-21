@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class DialogueManager : MonoBehaviour
 {
-
+	public static DialogueManager Instance;
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI dialogueText;
 
@@ -17,14 +17,23 @@ public class DialogueManager : MonoBehaviour
 	public DialogueTrigger dialogueTrigger1;
 	public DialogueTrigger dialogueTrigger2;
 	public DialogueTrigger dialogueTrigger3;
+	public DialogueTrigger dialogueTrigger4;
 	public Image  BgBlack;
-	
-	// Use this for initialization
-	void Start()
-	{
 
+	bool start;
+    private void Awake()
+    {
+		if (Instance == null)
+			Instance = this;
 		sentences = new Queue<string>();
-		dialogueTrigger1.TriggerDialogue();
+		
+	}
+    // Use this for initialization
+    void Start()
+	{
+		LeanTween.delayedCall(0.2f, () => { Player.Instance.playerDead = true; dialogueTrigger1.TriggerDialogue(); });
+		
+		LeanTween.delayedCall(20f, () => { EndDialogue(); Player.Instance.playerDead = false; });
 	}
 
 	public void StartDialogue(Dialogue dialogue)
@@ -57,21 +66,21 @@ public class DialogueManager : MonoBehaviour
 		StopAllCoroutines();
 		StartCoroutine(TypeSentence(sentence));
 	}
-
+	public float speed = 0.08f;
 	IEnumerator TypeSentence(string sentence)
 	{
 		dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
 			dialogueText.text += letter;
-			yield return new WaitForSeconds(0.08f);
+			yield return new WaitForSeconds(speed);
 		}
 	}
 	public GameManager gameManager;
-	void EndDialogue()
+	public void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
-		StartCoroutine(ChangeScene());
+		//StartCoroutine(ChangeScene());
 	}
 	IEnumerator ChangeScene()
     {
@@ -85,11 +94,20 @@ public class DialogueManager : MonoBehaviour
 					BgBlack.enabled = false;
 			
 			
-			if (!GameManager.Instance.gameStarted)
-				gameManager.OpenControlsCanvas();
+			//if (!GameManager.Instance.gameStarted)
+			//	gameManager.OpenControlsCanvas();
 		}
 		
 
     }
+    private void Update()
+    {
 
+		//if (sentences.Count == 0 && start)
+		//{
+		//	EndDialogue();
+
+		//}
+
+	}
 }
