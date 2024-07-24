@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.23
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31311065, g: 0.23804957, b: 0.25674814, a: 0.23}
+  m_IndirectSpecularColor: {r: 0.31311917, g: 0.23805365, b: 0.25675017, a: 0.23}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13995,7 +13995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dfb7999ba32bf6c4e9ef4a79faa865bb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1399.9999
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dfb7999ba32bf6c4e9ef4a79faa865bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14039,7 +14039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dfb7999ba32bf6c4e9ef4a79faa865bb, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: dfb7999ba32bf6c4e9ef4a79faa865bb, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14837,7 +14837,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -51.9429, y: 3.7, z: 136.0118}
-  m_LocalScale: {x: -238.93958, y: 1, z: 284.23526}
+  m_LocalScale: {x: 238.9396, y: 1, z: 284.23526}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

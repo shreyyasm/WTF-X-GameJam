@@ -735,12 +735,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7982014133676434855}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!114 &3962988720665842971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8dd6464667fe776498e2da2fc89f48ba, type: 2}
   - {fileID: 2100000, guid: 8dd6464667fe776498e2da2fc89f48ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

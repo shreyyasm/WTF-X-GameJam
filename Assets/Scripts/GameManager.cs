@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         if (Instance == null)
             Instance = this;
     }
@@ -61,9 +62,10 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.UnloadSceneAsync(currentIndex);
-        SceneManager.LoadScene(1);
+        // int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        // SceneManager.UnloadSceneAsync(currentIndex);
+        // SceneManager.LoadScene(1);
+        GoToStory();
     }
     public void OpenControlsCanvas()
     {
