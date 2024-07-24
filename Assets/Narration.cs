@@ -15,7 +15,7 @@ public class Narration : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        LeanTween.delayedCall(0.2f, () => { audioSource.PlayOneShot(Narration1, 1f); });
+            LeanTween.delayedCall(0.2f, () => { audioSource.PlayOneShot(Narration1, 1f); });
        // audioSource.PlayOneShot(Narration1, 0.7f);
     }
     public GameObject CAMERA;

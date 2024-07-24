@@ -325,7 +325,7 @@ public class LeanTween : MonoBehaviour {
             tweensFinished = new int[maxTweens];
             tweensFinishedIds = new int[maxTweens];
             _tweenEmpty = new GameObject();
-            _tweenEmpty.name = "~LeanTween";
+            _tweenEmpty.name = "LeanTween";
             _tweenEmpty.AddComponent(typeof(LeanTween));
             _tweenEmpty.isStatic = true;
             #if !UNITY_EDITOR

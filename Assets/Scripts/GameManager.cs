@@ -48,24 +48,24 @@ public class GameManager : MonoBehaviour
     }
     public void GoToGame()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.UnloadSceneAsync(currentIndex);
+        // Scene currentscene = SceneManager.GetActiveScene();
+        // SceneManager.UnloadSceneAsync(currentscene);
         SceneManager.LoadScene(2);
     }
     public void GotoMainMenu()
     {
         SceneManager.LoadScene(0,LoadSceneMode.Single);
-        //int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        //SceneManager.UnloadSceneAsync(currentIndex);
+        //int currentscene = SceneManager.GetActiveScene().buildIndex;
+        //SceneManager.UnloadSceneAsync(currentscene);
         //LeanTween.delayedCall(8f, () => { anim.SetBool("Idle", false); });
         
     }
     public void RestartGame()
     {
-        // int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        // SceneManager.UnloadSceneAsync(currentIndex);
-        // SceneManager.LoadScene(1);
-        GoToStory();
+        // Scene currentscene = SceneManager.GetActiveScene();
+        // SceneManager.UnloadSceneAsync(currentscene);
+        SceneManager.LoadScene(1);
+        // GoToStory();
     }
     public void OpenControlsCanvas()
     {
