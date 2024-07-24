@@ -10,6 +10,9 @@ public class Beaker : MonoBehaviour
     public GameObject liquid ;
     private string chemicalName = " ";
     
+    private void Start() {
+        liquid.GetComponent<Renderer>().material.SetFloat("_Liquidlevel", Random.Range(0f,0.7f));
+    }
     public void SetData(int d,string s)
     {
         data = d;

@@ -1040,18 +1040,21 @@ public class SUPERCharacterAIO : MonoBehaviour{
                     }
                 }else{currentGroundInfo.groundLayer = null;}                
             }else{
-                currentGroundInfo.groundLayer = null;
-                currentGroundInfo.groundPhysicMaterial = currentGroundInfo.groundFromRay.collider.sharedMaterial;
-                currentGroundInfo.currentMesh = currentGroundInfo.groundFromRay.transform.GetComponent<MeshFilter>().sharedMesh;
-                if(currentGroundInfo.currentMesh && currentGroundInfo.currentMesh.isReadable){
-                    int limit = currentGroundInfo.groundFromRay.triangleIndex*3, submesh;
-                    for(submesh = 0; submesh<currentGroundInfo.currentMesh.subMeshCount; submesh++){
-                        int indices = currentGroundInfo.currentMesh.GetTriangles(submesh).Length;
-                        if(indices>limit){break;}
-                        limit -= indices;
-                    }
-                    currentGroundInfo.groundMaterial = currentGroundInfo.groundFromRay.transform.GetComponent<Renderer>().sharedMaterials[submesh];
-                }else{currentGroundInfo.groundMaterial = currentGroundInfo.groundFromRay.collider.GetComponent<MeshRenderer>().sharedMaterial; }
+                if(currentGroundInfo.groundFromRay.transform.GetComponent<MeshFilter>() != null){
+                    currentGroundInfo.groundLayer = null;
+                    currentGroundInfo.groundPhysicMaterial = currentGroundInfo.groundFromRay.collider.sharedMaterial;
+                    
+                    currentGroundInfo.currentMesh = currentGroundInfo.groundFromRay.transform.GetComponent<MeshFilter>().sharedMesh;
+                    if(currentGroundInfo.currentMesh && currentGroundInfo.currentMesh.isReadable){
+                        int limit = currentGroundInfo.groundFromRay.triangleIndex*3, submesh;
+                        for(submesh = 0; submesh<currentGroundInfo.currentMesh.subMeshCount; submesh++){
+                            int indices = currentGroundInfo.currentMesh.GetTriangles(submesh).Length;
+                            if(indices>limit){break;}
+                            limit -= indices;
+                        }
+                        currentGroundInfo.groundMaterial = currentGroundInfo.groundFromRay.transform.GetComponent<Renderer>().sharedMaterials[submesh];
+                    }else{currentGroundInfo.groundMaterial = currentGroundInfo.groundFromRay.collider.GetComponent<MeshRenderer>().sharedMaterial; }
+                }
             }
         }else{currentGroundInfo.groundMaterial = null; currentGroundInfo.groundLayer = null; currentGroundInfo.groundPhysicMaterial = null;}
         #if UNITY_EDITOR
