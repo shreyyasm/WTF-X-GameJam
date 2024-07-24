@@ -10078,6 +10078,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5089660886900145167, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
   m_PrefabInstance: {fileID: 4962451223956131610}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &911593475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4939653379153328790, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
+  m_PrefabInstance: {fileID: 4962451223956131610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &945571627 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 531573635159428395, guid: e69276afe7fc3dc40b024588faa7d7e2, type: 3}
@@ -21792,14 +21797,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1529606679}
     m_Modifications:
-    - target: {fileID: 699425322461775304, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 699425322461775304, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+    - target: {fileID: 1784640470770452342, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
+      propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 2100000, guid: 8dd6464667fe776498e2da2fc89f48ba, type: 2}
+      objectReference: {fileID: 911593475}
     - target: {fileID: 3962988720665842971, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
       propertyPath: player
       value: 
@@ -21844,10 +21845,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7982014133676434855, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8947716261810374727, guid: 45ea19953810fe74a8349e02adecfc1d, type: 3}
       propertyPath: m_Name
       value: Beaker (1)

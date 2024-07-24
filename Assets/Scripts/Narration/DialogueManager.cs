@@ -67,9 +67,9 @@ public class DialogueManager : MonoBehaviour
     void Start()
 	{
 		LeanTween.delayedCall(0.2f, () => { Player.Instance.playerDead = true; dialogueTrigger1.TriggerDialogue(); Player.Instance.Narrating = true; });
-		LeanTween.delayedCall(6f, () => { if (!skipped) { greenBoardCam.SetActive(false); LabCam.SetActive(true); }  });
-		LeanTween.delayedCall(15f, () => { if (!skipped) { LabCam.SetActive(false); vortexCam.SetActive(true); }   });
-		LeanTween.delayedCall(20f, () => { if (!skipped) { vortexCam.SetActive(false); playerCam.SetActive(true); }  });
+		LeanTween.delayedCall(6f, () => { if (!skipped && greenBoardCam != null) { greenBoardCam.SetActive(false); LabCam.SetActive(true); }  });
+		LeanTween.delayedCall(15f, () => { if (!skipped && LabCam != null) { LabCam.SetActive(false); vortexCam.SetActive(true); }   });
+		LeanTween.delayedCall(20f, () => { if (!skipped && vortexCam != null) { vortexCam.SetActive(false); playerCam.SetActive(true); }  });
 		LeanTween.delayedCall(20f, () => { EndDialogue(); Player.Instance.playerDead = false; Player.Instance.Narrating = false; });
 	}
 
@@ -116,7 +116,8 @@ public class DialogueManager : MonoBehaviour
 	public GameManager gameManager;
 	public void EndDialogue()
 	{
-		animator.SetBool("IsOpen", false);
+		if(animator != null)
+		{animator.SetBool("IsOpen", false);}
 		//StartCoroutine(ChangeScene());
 	}
 	IEnumerator ChangeScene()
