@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                OptionsCanvas.SetActive(true);
+                if(OptionsCanvas != null){
+                    OptionsCanvas.SetActive(true);}
                 OptionsOpend = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OptionsCanvas.SetActive(false);
+                if(OptionsCanvas != null)
+                    OptionsCanvas.SetActive(false);
                 OptionsOpend = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;

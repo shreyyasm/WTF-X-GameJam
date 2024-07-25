@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 0.23
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31311917, g: 0.23805365, b: 0.25675017, a: 0.23}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21937,18 +21936,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1544939358508233996, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: airControlFactor
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544939358508233996, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: enableMovementControl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544939358508233996, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: enableMovementDebugging
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2180777516304459835, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
       propertyPath: GM
       value: 
@@ -21976,18 +21963,6 @@ PrefabInstance:
     - target: {fileID: 3107428706696893800, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3919155395433887340, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: m_Url
-      value: file:///home/piers/piers/GitHub/WTF-X-GameJam/Assets/km_20240720-3_1080p_1.mp4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3919155395433887340, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: m_VideoClip
-      value: 
-      objectReference: {fileID: 32900000, guid: 2cd72fe00b506001fbfc8895e249ec2e, type: 3}
-    - target: {fileID: 3919155395433887340, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: m_DataSource
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6248292493932778104, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22028,10 +22003,6 @@ PrefabInstance:
     - target: {fileID: 6248292493932778104, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7110809329819462870, guid: 8d23f2a2e4d2725458963994b83a9290, type: 3}
-      propertyPath: m_Mass
-      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

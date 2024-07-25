@@ -604,12 +604,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 729977268173886124}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 729977268173886124}
+  m_maskType: 0
 --- !u!114 &8934908828951910876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   Jumped: 0
   jumpKey: 1
   jumpPower: 120
-  airControlFactor: 0
+  airControlFactor: 0.1
   decentMultiplier: 3
   tapJumpMultiplier: 2
   isSliding: 0
@@ -1544,7 +1544,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3503920124021784975}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: d7e5bf6234e620b448f5e48dfb124ff1, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b2d3767e3470f244bb9415d391336626, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1562,7 +1562,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: file:///home/piers/piers/GitHub/WTF-X-GameJam/Assets/km_20240720-3_1080p_1.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
