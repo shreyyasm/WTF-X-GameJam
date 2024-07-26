@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         if (Instance == null)
             Instance = this;
     }
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                OptionsCanvas.SetActive(true);
+                if(OptionsCanvas != null){
+                    OptionsCanvas.SetActive(true);}
                 OptionsOpend = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
@@ -33,7 +35,8 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OptionsCanvas.SetActive(false);
+                if(OptionsCanvas != null)
+                    OptionsCanvas.SetActive(false);
                 OptionsOpend = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -47,23 +50,24 @@ public class GameManager : MonoBehaviour
     }
     public void GoToGame()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.UnloadSceneAsync(currentIndex);
+        // Scene currentscene = SceneManager.GetActiveScene();
+        // SceneManager.UnloadSceneAsync(currentscene);
         SceneManager.LoadScene(2);
     }
     public void GotoMainMenu()
     {
         SceneManager.LoadScene(0,LoadSceneMode.Single);
-        //int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        //SceneManager.UnloadSceneAsync(currentIndex);
+        //int currentscene = SceneManager.GetActiveScene().buildIndex;
+        //SceneManager.UnloadSceneAsync(currentscene);
         //LeanTween.delayedCall(8f, () => { anim.SetBool("Idle", false); });
         
     }
     public void RestartGame()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.UnloadSceneAsync(currentIndex);
+        // Scene currentscene = SceneManager.GetActiveScene();
+        // SceneManager.UnloadSceneAsync(currentscene);
         SceneManager.LoadScene(1);
+        // GoToStory();
     }
     public void OpenControlsCanvas()
     {
